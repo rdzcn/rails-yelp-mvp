@@ -1,0 +1,25 @@
+<div class="container-fluid">
+<div class="row">
+	<div class="col-xs-6 col-xs-offset-3 text-center">
+		<h1>
+			Our Beautiful Restaurants
+		</h1>
+	</div>
+</div>
+	<% @restaurants[0..11].each do |restaurant| %>
+	<div class="col-xs-12 col-sm-6 col-md-4">
+	<ul>
+		<li><%= link_to restaurant.name.upcase, restaurant_path(restaurant)%></li>
+		<li><span class="list-title">Address:</span> <%= restaurant.address.capitalize %></li>
+		<li><span class="list-title">Category:</span> <%= restaurant.category.capitalize %></li>
+		<li><span class="list-title">Phone number:</span> <%= restaurant.phone_number %></li>
+	</ul>
+	</div>
+	<% end %>
+
+<div class="row text-center">
+  <div class="col-xs-6 col-xs-offset-3">
+	  <%= link_to "ADD A NEW RESTAURANT", new_restaurant_path, class: "btn btn-primary"  %>
+  </div>
+ </div>
+</div>
