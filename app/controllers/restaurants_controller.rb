@@ -11,7 +11,11 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.create(restaurant_params)
-    redirect_to restaurant_path(@restaurant)
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -26,8 +30,11 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    @restaurant.update(restaurant_params)
-    redirect_to restaurant_path(@restaurant)
+    if @restaurant.update(restaurant_params)
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :edit
+    end
   end
 
   private
@@ -37,6 +44,7 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_params
+    params[:restaurant][:category] = params[:restaurant][:category].downcase
     params.require(:restaurant).permit(:name, :address, :phone_number, :category)
   end
 end

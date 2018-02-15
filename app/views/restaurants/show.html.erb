@@ -9,10 +9,12 @@
 					<h2>Category: <%= @restaurant.category.capitalize %></h2>
 				</div>
 				<div class="restaurant-card-footer">
-					<%= link_to "Update restaurant", edit_restaurant_path(@restaurant) %>
-					<%= link_to "List all", restaurants_path %>
-				  <%= link_to "Delete restaurant", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" } %>
+					<%= link_to "Update restaurant", edit_restaurant_path(@restaurant), class: "btn btn-success" %>
+					<%= link_to "List all", restaurants_path, class: "btn btn-success" %>
+				  <%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-success" %>
+				  <%= link_to "Delete restaurant", restaurant_path(@restaurant), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
 				</div>
+
 			</div>
 		</div>
 	</div>

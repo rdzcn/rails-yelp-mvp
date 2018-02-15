@@ -1,0 +1,16 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-3 text-center">
+			<h1>
+				Reviews
+			</h1>
+		</div>
+	</div>
+	<% @reviews.each do |review| %>
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<ul>
+			<li><%= review.content %></li>
+			<li><span class="list-title">Rating:</span> <%= review.rating %></li>
+		</ul>
+	</div>
+	<% end %>
